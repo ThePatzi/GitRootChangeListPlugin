@@ -25,16 +25,15 @@ class DoChangeListMagicAction extends AnAction("ChangeList Magic") {
   }
 
   def getChangeLists(changeListManager: ChangeListManager, projectLevelVcsManager: ProjectLevelVcsManager): Map[String, LocalChangeList] = {
-    val changeListMap = changeListManager.getChangeLists.asScala map { changeList => changeList.getName -> changeList } toMap
+    var changeListMap = changeListManager.getChangeLists.asScala map { changeList => changeList.getName -> changeList } toMap
 
-    val map = changeListManager.getAllChanges.asScala.toStream
+    changeListManager.getAllChanges.asScala.toStream
       .map { change => projectLevelVcsManager.getVcsRootFor(change.getVirtualFile) }
       .map { vcsRoot => vcsRoot.getName }
       .distinct
       .filter(!changeListMap.contains(_))
-      .map({ name => name -> changeListManager.addChangeList(name, "") })
-      .toMap
+      .foreach({ name => name -> changeListManager.addChangeList(name, "") })
 
-    changeListMap ++ map
+    changeListManager.getChangeLists.asScala map { changeList => changeList.getName -> changeList } toMap
   }
 }
