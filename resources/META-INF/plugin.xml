@@ -1,17 +1,15 @@
 <idea-plugin version="2">
-    <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
-    <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.pichler.gitroochangelistplugin</id>
+    <name>VCS Root ChangeList Generator</name>
+    <version>0.0.1</version>
+    <vendor email="p.pichler@tac.eu.com" url="http://www.tac.eu.com">TAC</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Plugin which allows you to create a change list for each VCS-Root registered in the current projectz
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      First release!
     ]]>
     </change-notes>
 
